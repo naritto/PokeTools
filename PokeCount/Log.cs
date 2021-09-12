@@ -10,7 +10,7 @@ namespace PokeCount
 {
     static class Log
     {
-        public static void LoadLog(PokeCountProg target, ref UserControl1[] userControls, string result_folder_path, int max_control_num)
+        public static void LoadLog(PokeCountProg target, ref PokeMenu[] userControls, string result_folder_path, int max_control_num)
         {
             OpenFileDialog ofd = new OpenFileDialog();
             ofd.FileName = "result.csv";
@@ -55,7 +55,7 @@ namespace PokeCount
             }
         }
 
-        public static void SaveLog(ref UserControl1[] user_controls, string result_folder_path)
+        public static void SaveLog(ref PokeMenu[] user_controls, string result_folder_path)
         {
             //SaveFileDialogクラスのインスタンスを作成
             SaveFileDialog sfd = new SaveFileDialog();

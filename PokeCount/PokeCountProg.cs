@@ -27,7 +27,7 @@ namespace PokeCount
                 return m_user_control_num;
             }
         }
-        private UserControl1[] m_user_controls;
+        private PokeMenu[] m_user_controls;
         private PokeInfo m_pokeinfo;
         private string m_resource_folder_path = "";
 
@@ -37,7 +37,7 @@ namespace PokeCount
             InitializeComponent();
             m_resource_folder_path = System.IO.Path.Combine(System.Windows.Forms.Application.StartupPath, "..", "..", "resource");
             m_pokeinfo = new PokeInfo(m_resource_folder_path);
-            this.m_user_controls = new UserControl1[m_user_control_num];
+            this.m_user_controls = new PokeMenu[m_user_control_num];
             InitializeView(0, m_user_control_num);
             this.menuBar1.UpdateUserControlCountsEvent += new MenuBar.MenuBarEventHandler(CallBackEventChangeUserControlCounts);
             this.menuBar1.ResetContentsEvent += new EventHandler(CallBackEventResetAllInfo);
@@ -57,13 +57,13 @@ namespace PokeCount
         }
         public void Initialize(int i)
         {
-            this.m_user_controls[i] = new PokeCount.UserControl1(m_resource_folder_path);
+            this.m_user_controls[i] = new PokeCount.PokeMenu(m_resource_folder_path);
             this.m_user_controls[i].Location = new System.Drawing.Point(0, 110 * i + 30);
             this.m_user_controls[i].Name = "userControl1-" + Convert.ToString(i);
             this.m_user_controls[i].Size = new System.Drawing.Size(692, 118);
             this.m_user_controls[i].TabIndex = i;
             this.Controls.Add(this.m_user_controls[i]);
-            this.m_user_controls[i].MyProgressEvent += new UserControl1.MyEventHandler(CallBackEventProgress);
+            this.m_user_controls[i].MyProgressEvent += new PokeMenu.MyEventHandler(CallBackEventProgress);
         }
 
         public void ChangeUserControlCounts(int count)
@@ -84,7 +84,7 @@ namespace PokeCount
             this.Size = new Size(663, 110 * m_user_control_num + 70);
         }
 
-        private void CallBackEventProgress(UserControl1.MyEventArgs e)
+        private void CallBackEventProgress(PokeMenu.MyEventArgs e)
         {
             e.Name = m_pokeinfo.GetPokeName(e.ID);
         }

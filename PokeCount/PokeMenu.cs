@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace PokeCount
 {
-    public partial class UserControl1 : UserControl
+    public partial class PokeMenu : UserControl
     {
         public event MyEventHandler MyProgressEvent;
         private void UpdatePokeName(int id, string name)
@@ -133,7 +133,7 @@ namespace PokeCount
         private string m_pokepic_images_folder_path = "";
 
 
-        public UserControl1(string resource_folder_path)
+        public PokeMenu(string resource_folder_path)
         {
             InitializeComponent();
             InitializeAllData(resource_folder_path);

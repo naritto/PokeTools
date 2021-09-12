@@ -1,6 +1,6 @@
 ﻿namespace PokeCount
 {
-    partial class UserControl1
+    partial class PokeMenu
     {
         /// <summary> 
         /// 必要なデザイナー変数です。
@@ -173,7 +173,7 @@
             this.color_button.UseVisualStyleBackColor = true;
             this.color_button.Click += new System.EventHandler(this.color_button_Click);
             // 
-            // UserControl1
+            // PokeMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -188,7 +188,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.minus_button);
             this.Controls.Add(this.plus_button);
-            this.Name = "UserControl1";
+            this.Name = "PokeMenu";
             this.Size = new System.Drawing.Size(692, 109);
             ((System.ComponentModel.ISupportInitialize)(this.pokepic)).EndInit();
             this.ResumeLayout(false);
