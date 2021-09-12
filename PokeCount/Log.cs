@@ -10,7 +10,7 @@ namespace PokeCount
 {
     static class Log
     {
-        public static void LoadLog(ref UserControl1[] userContorls, string result_folder_path)
+        public static void LoadLog(PokeCountProg target, ref UserControl1[] userControls, string result_folder_path, int max_control_num)
         {
             OpenFileDialog ofd = new OpenFileDialog();
             ofd.FileName = "result.csv";
@@ -31,17 +31,25 @@ namespace PokeCount
 
                     StreamReader sr = new StreamReader(stream);
                     {
-                        // 末尾まで繰り返す
+                        int i = 0;
+                        Array.Resize(ref userControls, max_control_num);
                         while (!sr.EndOfStream)
                         {
                             // CSVファイルの一行を読み込む
                             string line = sr.ReadLine();
-                            // 読み込んだ一行をカンマ毎に分けて配列に格納する
                             string[] values = line.Split(',');
-                            if (values.Length == 3)
+                            if (i >= target.UserControlNum)
                             {
+
+                                target.Initialize(i);
                             }
+                            userControls[i].DictNum = Convert.ToInt32(values[0]);
+                            userControls[i].CountColor = Convert.ToInt32(values[1]);
+                            userControls[i].CountAll = Convert.ToInt32(values[2]);
+                            userControls[i].UpdatePokeInfo();
+                            ++i;
                         }
+                        target.ChangeUserControlCounts(i);
                     }
                 }
             }

@@ -46,6 +46,7 @@
             this.Controls.Add(this.menuBar1);
             this.Name = "PokeCountProg";
             this.Text = "PokeCount";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.OnFormClosing);
             this.ResumeLayout(false);
 
         }

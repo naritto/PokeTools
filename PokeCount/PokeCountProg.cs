@@ -13,9 +13,20 @@ namespace PokeCount
 {
     public partial class PokeCountProg : Form
     {
-        const int MAX_CONTROL_NUM = 9;
+        public const int MAX_CONTROL_NUM = 9;
         const int DEFAULT_CONTROL_NUM = 1;
         private int m_user_control_num = DEFAULT_CONTROL_NUM;
+        public int UserControlNum
+        {
+            set
+            {
+                m_user_control_num = value;
+            }
+            get
+            {
+                return m_user_control_num;
+            }
+        }
         private UserControl1[] m_user_controls;
         private PokeInfo m_pokeinfo;
         private string m_resource_folder_path = "";
@@ -55,7 +66,7 @@ namespace PokeCount
             this.m_user_controls[i].MyProgressEvent += new UserControl1.MyEventHandler(CallBackEventProgress);
         }
 
-        private void ChangeUserControlCounts(int count)
+        public void ChangeUserControlCounts(int count)
         {
             if (count < m_user_control_num)
             {
@@ -93,8 +104,7 @@ namespace PokeCount
         }
         private void CallBackLoadLog(object sender, EventArgs e)
         {
-            //Log.
-            LoadLog(ref m_user_controls, System.IO.Path.Combine(m_resource_folder_path, "result"));
+            Log.LoadLog(this, ref m_user_controls, System.IO.Path.Combine(m_resource_folder_path, "result"), MAX_CONTROL_NUM);
             return;
         }
         private void CallBackSaveLog(object sender, EventArgs e)
@@ -103,50 +113,9 @@ namespace PokeCount
             return;
         }
 
-        public void LoadLog(ref UserControl1[] userContorls, string result_folder_path)
+        private void OnFormClosing(object sender, FormClosingEventArgs e)
         {
-            OpenFileDialog ofd = new OpenFileDialog();
-            ofd.FileName = "result.csv";
-            ofd.InitialDirectory = result_folder_path;
-            ofd.Filter = "CSVファイル(*.csv)|*.csv|すべてのファイル(*.*)|*.*";
-            ofd.FilterIndex = 1;
-            ofd.Title = "開くファイルを選択してください";
-            ofd.RestoreDirectory = true;
-            ofd.CheckFileExists = true;
-            ofd.CheckPathExists = true;
-
-            if (ofd.ShowDialog() == DialogResult.OK)
-            {
-                Stream stream;
-                stream = ofd.OpenFile();
-                if (stream != null)
-                {
-
-                    StreamReader sr = new StreamReader(stream);
-                    {
-                        int i = 0;
-                        // 末尾まで繰り返す
-                        string[] lines = new string[0];
-                        Array.Resize(ref this.m_user_controls, MAX_CONTROL_NUM);
-                        while (!sr.EndOfStream)
-                        {
-                            // CSVファイルの一行を読み込む
-                            string line = sr.ReadLine();
-                            string[] values = line.Split(',');
-                            if (i >= m_user_control_num) {
-                                
-                                Initialize(i);
-                            }
-                            m_user_controls[i].DictNum = Convert.ToInt32(values[0]);
-                            m_user_controls[i].CountColor = Convert.ToInt32(values[1]);
-                            m_user_controls[i].CountAll = Convert.ToInt32(values[2]);
-                            m_user_controls[i].UpdatePokeInfo();
-                            ++i;
-                        }
-                        ChangeUserControlCounts(i);
-                    }
-                }
-            }
+            Log.SaveLog(ref m_user_controls, System.IO.Path.Combine(m_resource_folder_path, "result"));
         }
     }
 }
