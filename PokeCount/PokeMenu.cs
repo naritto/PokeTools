@@ -12,22 +12,18 @@ namespace PokeCount
 {
     public partial class PokeMenu : UserControl
     {
-        public event MyEventHandler MyProgressEvent;
+        public event PokeMenuEventHandler PokeMenuEvent;
         private void UpdatePokeName(int id, string name)
         {
-            MyEventArgs e = new MyEventArgs(id, name);
-            MyProgressEvent(e);
+            PokeMenuEventArgs e = new PokeMenuEventArgs(id, name);
+            PokeMenuEvent(e);
             DictNum = e.ID;
             PokeName = e.Name;
         }
 
-        //-----------------------------------
-        //イベントハンドラのデリゲートを定義
-        public delegate void MyEventHandler(MyEventArgs e);
+        public delegate void PokeMenuEventHandler(PokeMenuEventArgs e);
 
-        //-----------------------------------
-        // 渡せるイベントデータ引数、EventArgsを継承したクラスを拡張
-        public class MyEventArgs : EventArgs
+        public class PokeMenuEventArgs : EventArgs
         {
             private int _id;
             private string _name;
@@ -44,7 +40,7 @@ namespace PokeCount
                 }
             }
 
-            public MyEventArgs(int id, string name)
+            public PokeMenuEventArgs(int id, string name)
             {
                 _id = id;
                 _name = name;
@@ -179,7 +175,7 @@ namespace PokeCount
         }
 
         // textbox
-        private void dict_num_KeyPress(object sender, KeyPressEventArgs e)
+        private void Dict_num_KeyPress(object sender, KeyPressEventArgs e)
         {
             //0～9と、バックスペース以外の時は、イベントをキャンセルする
             if ((e.KeyChar < '0' || '9' < e.KeyChar) && e.KeyChar != '\b')
@@ -188,7 +184,7 @@ namespace PokeCount
             }
             return;
         }
-        private void dict_num_KeyDown(object sender, KeyEventArgs e)
+        private void Dict_num_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
@@ -196,7 +192,7 @@ namespace PokeCount
             }
             return;
         }
-        private void dict_num_TextChanged(object sender, EventArgs e)
+        private void Dict_num_TextChanged(object sender, EventArgs e)
         {
             if (dict_num.Text == "")
             {
@@ -207,12 +203,12 @@ namespace PokeCount
                 m_dict_num = Convert.ToInt32(dict_num.Text);
             }
         }
-        private void pokename_TextChanged(object sender, EventArgs e)
+        private void Pokename_TextChanged(object sender, EventArgs e)
         {
             m_poke_name = pokename.Text;
         }
 
-        private void encount_all_KeyPress(object sender, KeyPressEventArgs e)
+        private void Encount_all_KeyPress(object sender, KeyPressEventArgs e)
         {
 
             //0～9と、バックスペース以外の時は、イベントをキャンセルする
@@ -222,13 +218,20 @@ namespace PokeCount
             }
         }
 
-        private void encount_TextChanged(object sender, EventArgs e)
+        private void Encount_TextChanged(object sender, EventArgs e)
         {
-            m_count_all = Int32.Parse(encount_all.Text);
+            if (encount_all.Text != "")
+            {
+                m_count_all = Int32.Parse(encount_all.Text);
+            }
+            else
+            {
+                m_count_all = 0;
+            }
         }
 
 
-        private void encount_color_KeyPress(object sender, KeyPressEventArgs e)
+        private void Encount_color_KeyPress(object sender, KeyPressEventArgs e)
         {
             //0～9と、バックスペース以外の時は、イベントをキャンセルする
             if ((e.KeyChar < '0' || '9' < e.KeyChar) && e.KeyChar != '\b')
@@ -237,18 +240,25 @@ namespace PokeCount
             }
 
         }
-        private void encount_color_TextChanged(object sender, EventArgs e)
+        private void Encount_color_TextChanged(object sender, EventArgs e)
         {
-            m_count_color = Int32.Parse(encount_color.Text);
+            if (encount_color.Text != "")
+            {
+                m_count_color = Int32.Parse(encount_color.Text);
+            }
+            else
+            {
+                m_count_color = 0;
+            }
         }
 
         // button
-        private void plus_button_Click(object sender, EventArgs e)
+        private void Plus_button_Click(object sender, EventArgs e)
         {
             ++m_count_all;
             encount_all.Text = Convert.ToString(m_count_all);
         }
-        private void minus_button_Click(object sender, EventArgs e)
+        private void Minus_button_Click(object sender, EventArgs e)
         {
             if (m_count_all != 0)
             {
@@ -256,12 +266,12 @@ namespace PokeCount
                 encount_all.Text = Convert.ToString(m_count_all);
             }
         }
-        private void color_button_Click(object sender, EventArgs e)
+        private void Color_button_Click(object sender, EventArgs e)
         {
             ++m_count_color;
             encount_color.Text = Convert.ToString(m_count_color);
         }
-        private void show_pic_Click(object sender, EventArgs e)
+        private void Show_pic_Click(object sender, EventArgs e)
         {
             UpdatePokeInfo();
         }

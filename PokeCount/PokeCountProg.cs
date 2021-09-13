@@ -63,7 +63,7 @@ namespace PokeCount
             this.m_user_controls[i].Size = new System.Drawing.Size(692, 118);
             this.m_user_controls[i].TabIndex = i;
             this.Controls.Add(this.m_user_controls[i]);
-            this.m_user_controls[i].MyProgressEvent += new PokeMenu.MyEventHandler(CallBackEventProgress);
+            this.m_user_controls[i].PokeMenuEvent += new PokeMenu.PokeMenuEventHandler(CallBackEventProgress);
         }
 
         public void ChangeUserControlCounts(int count)
@@ -84,7 +84,7 @@ namespace PokeCount
             this.Size = new Size(663, 110 * m_user_control_num + 70);
         }
 
-        private void CallBackEventProgress(PokeMenu.MyEventArgs e)
+        private void CallBackEventProgress(PokeMenu.PokeMenuEventArgs e)
         {
             e.Name = m_pokeinfo.GetPokeName(e.ID);
         }

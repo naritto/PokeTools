@@ -54,8 +54,8 @@
             this.encount_all.TabIndex = 0;
             this.encount_all.Text = "0";
             this.encount_all.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.encount_all.TextChanged += new System.EventHandler(this.encount_TextChanged);
-            this.encount_all.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.encount_all_KeyPress);
+            this.encount_all.TextChanged += new System.EventHandler(this.Encount_TextChanged);
+            this.encount_all.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Encount_all_KeyPress);
             // 
             // encount_color
             // 
@@ -69,8 +69,8 @@
             this.encount_color.TabIndex = 1;
             this.encount_color.Text = "0";
             this.encount_color.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.encount_color.TextChanged += new System.EventHandler(this.encount_color_TextChanged);
-            this.encount_color.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.encount_color_KeyPress);
+            this.encount_color.TextChanged += new System.EventHandler(this.Encount_color_TextChanged);
+            this.encount_color.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Encount_color_KeyPress);
             // 
             // plus_button
             // 
@@ -81,7 +81,7 @@
             this.plus_button.TabIndex = 2;
             this.plus_button.Text = "+";
             this.plus_button.UseVisualStyleBackColor = true;
-            this.plus_button.Click += new System.EventHandler(this.plus_button_Click);
+            this.plus_button.Click += new System.EventHandler(this.Plus_button_Click);
             // 
             // minus_button
             // 
@@ -92,7 +92,7 @@
             this.minus_button.TabIndex = 3;
             this.minus_button.Text = "-";
             this.minus_button.UseVisualStyleBackColor = true;
-            this.minus_button.Click += new System.EventHandler(this.minus_button_Click);
+            this.minus_button.Click += new System.EventHandler(this.Minus_button_Click);
             // 
             // label1
             // 
@@ -114,7 +114,7 @@
             this.pokename.TabIndex = 6;
             this.pokename.Text = "ポケモン名";
             this.pokename.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.pokename.TextChanged += new System.EventHandler(this.pokename_TextChanged);
+            this.pokename.TextChanged += new System.EventHandler(this.Pokename_TextChanged);
             // 
             // dict_num
             // 
@@ -129,9 +129,9 @@
             this.dict_num.TabIndex = 7;
             this.dict_num.Text = "0";
             this.dict_num.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.dict_num.TextChanged += new System.EventHandler(this.dict_num_TextChanged);
-            this.dict_num.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dict_num_KeyDown);
-            this.dict_num.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dict_num_KeyPress);
+            this.dict_num.TextChanged += new System.EventHandler(this.Dict_num_TextChanged);
+            this.dict_num.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Dict_num_KeyDown);
+            this.dict_num.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Dict_num_KeyPress);
             // 
             // label3
             // 
@@ -160,7 +160,7 @@
             this.show_pic.TabIndex = 10;
             this.show_pic.Text = "情報表示";
             this.show_pic.UseVisualStyleBackColor = false;
-            this.show_pic.Click += new System.EventHandler(this.show_pic_Click);
+            this.show_pic.Click += new System.EventHandler(this.Show_pic_Click);
             // 
             // color_button
             // 
@@ -171,7 +171,7 @@
             this.color_button.TabIndex = 11;
             this.color_button.Text = "色";
             this.color_button.UseVisualStyleBackColor = true;
-            this.color_button.Click += new System.EventHandler(this.color_button_Click);
+            this.color_button.Click += new System.EventHandler(this.Color_button_Click);
             // 
             // PokeMenu
             // 
