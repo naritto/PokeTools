@@ -33,6 +33,7 @@ namespace PokeCount
                     {
                         int i = 0;
                         Array.Resize(ref userControls, max_control_num);
+                        target.ChangeUserControlCounts(max_control_num);
                         while (!sr.EndOfStream)
                         {
                             // CSVファイルの一行を読み込む
@@ -50,12 +51,13 @@ namespace PokeCount
                             ++i;
                         }
                         target.ChangeUserControlCounts(i);
+                        int a = 5;
                     }
                 }
             }
         }
 
-        public static void SaveLog(ref PokeMenu[] user_controls, string result_folder_path)
+        public static void SaveLog(PokeCountProg target, ref PokeMenu[] user_controls, string result_folder_path)
         {
             //SaveFileDialogクラスのインスタンスを作成
             SaveFileDialog sfd = new SaveFileDialog();
@@ -78,9 +80,10 @@ namespace PokeCount
                 {
                     //ファイルに書き込む
                     StreamWriter sw = new System.IO.StreamWriter(stream);
-                    for (int i = 0; i < user_controls.Length; ++i)
+                    for (int i = 0; i < target.UserControlNum; ++i)
                     {
                         sw.Write(user_controls[i].DictNum + "," + user_controls[i].CountColor + "," + user_controls[i].CountAll + "\n");
+
                     }
                     //閉じる
                     sw.Close();

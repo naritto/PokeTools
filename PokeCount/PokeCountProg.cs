@@ -109,13 +109,13 @@ namespace PokeCount
         }
         private void CallBackSaveLog(object sender, EventArgs e)
         {
-            Log.SaveLog(ref m_user_controls, System.IO.Path.Combine(m_resource_folder_path, "result"));
+            Log.SaveLog(this, ref m_user_controls, System.IO.Path.Combine(m_resource_folder_path, "result"));
             return;
         }
 
         private void OnFormClosing(object sender, FormClosingEventArgs e)
         {
-            Log.SaveLog(ref m_user_controls, System.IO.Path.Combine(m_resource_folder_path, "result"));
+            Log.SaveLog(this, ref m_user_controls, System.IO.Path.Combine(m_resource_folder_path, "result"));
         }
     }
 }
