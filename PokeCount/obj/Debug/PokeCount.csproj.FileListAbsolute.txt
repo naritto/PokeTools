@@ -1,0 +1,10 @@
+C:\Users\narit\Documents\GitHub\PokeTools\PokeCount\bin\Debug\PokeCount.exe.config
+C:\Users\narit\Documents\GitHub\PokeTools\PokeCount\bin\Debug\PokeCount.exe
+C:\Users\narit\Documents\GitHub\PokeTools\PokeCount\bin\Debug\PokeCount.pdb
+C:\Users\narit\Documents\GitHub\PokeTools\PokeCount\obj\Debug\PokeCount.csprojAssemblyReference.cache
+C:\Users\narit\Documents\GitHub\PokeTools\PokeCount\obj\Debug\PokeCount.Properties.Resources.resources
+C:\Users\narit\Documents\GitHub\PokeTools\PokeCount\obj\Debug\PokeCount.csproj.GenerateResource.cache
+C:\Users\narit\Documents\GitHub\PokeTools\PokeCount\obj\Debug\PokeCount.csproj.CoreCompileInputs.cache
+C:\Users\narit\Documents\GitHub\PokeTools\PokeCount\obj\Debug\PokeCount.exe
+C:\Users\narit\Documents\GitHub\PokeTools\PokeCount\obj\Debug\PokeCount.pdb
+C:\Users\narit\Documents\GitHub\PokeTools\PokeCount\obj\Debug\PokeCount.PokeCountProg.resources
