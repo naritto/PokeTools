@@ -11,11 +11,12 @@ using System.Windows.Forms;
 
 namespace ns_PokeCount
 {
-    public partial class PokeCount : Form
+    public partial class PokeCountMini : Form
     {
         public const int MAX_CONTROL_NUM = 9;
         const int DEFAULT_CONTROL_NUM = 1;
         private int m_user_control_num = DEFAULT_CONTROL_NUM;
+        public const int DISPLAY_WIDTH = 345;
         public int UserControlNum
         {
             set
@@ -27,17 +28,17 @@ namespace ns_PokeCount
                 return m_user_control_num;
             }
         }
-        private PokeMenu[] m_pokemenu;
+        private PokeMenuMini[] m_pokemenu;
         private PokeInfo m_pokeinfo;
         private string m_resource_folder_path = "";
 
 
-        public PokeCount()
+        public PokeCountMini()
         {
             InitializeComponent();
             m_resource_folder_path = System.IO.Path.Combine(System.Windows.Forms.Application.StartupPath, "..", "..", "resource");
             m_pokeinfo = new PokeInfo(m_resource_folder_path);
-            this.m_pokemenu = new PokeMenu[m_user_control_num];
+            this.m_pokemenu = new PokeMenuMini[m_user_control_num];
             InitializeView(0, m_user_control_num);
             this.menuBar1.UpdateUserControlCountsEvent += new MenuBar.MenuBarEventHandler(CallBackEventChangeUserControlCounts);
             this.menuBar1.ResetContentsEvent += new EventHandler(CallBackEventResetAllInfo);
@@ -52,18 +53,18 @@ namespace ns_PokeCount
                 Initialize(i);
 
             }
-            this.Size = new Size(663, 110 * m_user_control_num + 70);
+            this.Size = new Size(DISPLAY_WIDTH, 110 * m_user_control_num + 70);
             return;
         }
         public void Initialize(int i)
         {
-            this.m_pokemenu[i] = new PokeMenu(m_resource_folder_path);
+            this.m_pokemenu[i] = new PokeMenuMini(m_resource_folder_path);
             this.m_pokemenu[i].Location = new System.Drawing.Point(0, 110 * i + 30);
             this.m_pokemenu[i].Name = "userControl1-" + Convert.ToString(i);
-            this.m_pokemenu[i].Size = new System.Drawing.Size(692, 118);
+            this.m_pokemenu[i].Size = new System.Drawing.Size(DISPLAY_WIDTH, 118);
             this.m_pokemenu[i].TabIndex = i;
             this.Controls.Add(this.m_pokemenu[i]);
-            this.m_pokemenu[i].PokeMenuEvent += new PokeMenu.PokeMenuEventHandler(CallBackEventProgress);
+            this.m_pokemenu[i].PokeMenuEvent += new PokeMenuMini.PokeMenuEventHandler(CallBackEventProgress);
         }
 
         public void SetValues(string[] values, int i)
@@ -87,14 +88,15 @@ namespace ns_PokeCount
                 InitializeView(m_user_control_num, count);
             }
             m_user_control_num = count;
-            this.Size = new Size(663, 110 * m_user_control_num + 70);
+            this.Size = new Size(DISPLAY_WIDTH, 110 * m_user_control_num + 70);
         }
 
-        public string MakeOutputLine(int i) {
+        public string MakeOutputLine(int i)
+        {
             return m_pokemenu[i].MakeLine();
         }
 
-        private void CallBackEventProgress(PokeMenu.PokeMenuEventArgs e)
+        private void CallBackEventProgress(PokeMenuMini.PokeMenuEventArgs e)
         {
             e.Name = m_pokeinfo.GetPokeName(e.ID);
         }
@@ -104,7 +106,7 @@ namespace ns_PokeCount
             ChangeUserControlCounts(e.Count);
         }
 
-        private void CallBackEventResetAllInfo(object sender, EventArgs e) 
+        private void CallBackEventResetAllInfo(object sender, EventArgs e)
         {
             for (int i = 0; i < m_user_control_num; ++i)
             {
@@ -114,18 +116,18 @@ namespace ns_PokeCount
         }
         private void CallBackLoadLog(object sender, EventArgs e)
         {
-            Log.LoadLog(this, ref m_pokemenu, System.IO.Path.Combine(m_resource_folder_path, "result"), MAX_CONTROL_NUM);
+            LogMini.LoadLog(this, ref m_pokemenu, System.IO.Path.Combine(m_resource_folder_path, "result"), MAX_CONTROL_NUM);
             return;
         }
         private void CallBackSaveLog(object sender, EventArgs e)
         {
-            Log.SaveLog(this, ref m_pokemenu, System.IO.Path.Combine(m_resource_folder_path, "result"));
+            LogMini.SaveLog(this, ref m_pokemenu, System.IO.Path.Combine(m_resource_folder_path, "result"));
             return;
         }
 
         private void OnFormClosing(object sender, FormClosingEventArgs e)
         {
-            Log.SaveLog(this, ref m_pokemenu, System.IO.Path.Combine(m_resource_folder_path, "result"));
+            LogMini.SaveLog(this, ref m_pokemenu, System.IO.Path.Combine(m_resource_folder_path, "result"));
         }
     }
 }

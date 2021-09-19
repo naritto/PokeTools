@@ -1,6 +1,6 @@
 ﻿namespace ns_PokeCount
 {
-    partial class PokeCount
+    partial class PokeCountMini
     {
         /// <summary>
         /// Required designer variable.

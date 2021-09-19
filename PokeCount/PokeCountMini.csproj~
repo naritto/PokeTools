@@ -46,32 +46,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Log.cs" />
-    <Compile Include="MenuBar.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="MenuBar.Designer.cs">
-      <DependentUpon>MenuBar.cs</DependentUpon>
-    </Compile>
     <Compile Include="PokeCount.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="PokeCount.Designer.cs">
       <DependentUpon>PokeCount.cs</DependentUpon>
     </Compile>
-    <Compile Include="PokeInfo.cs" />
-    <Compile Include="PokeMenu.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="PokeMenu.Designer.cs">
-      <DependentUpon>PokeMenu.cs</DependentUpon>
-    </Compile>
-    <Compile Include="PokeNameReader.cs" />
     <Compile Include="ProgramPokeCount.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="PokeCount.resx">
-      <DependentUpon>PokeCount.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace PokeCount.Properties
+namespace ns_PokeCount.Properties
 {
 
 

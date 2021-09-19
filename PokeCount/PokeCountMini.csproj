@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{ACB2954F-8CA2-4A4B-967E-76CCA8B8D2C2}</ProjectGuid>
+    <ProjectGuid>{1A00A208-77CB-4165-87FF-192565EDD764}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>PokeCount</RootNamespace>
     <AssemblyName>PokeCount</AssemblyName>
@@ -46,32 +46,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Log.cs" />
+    <Compile Include="LogMini.cs" />
     <Compile Include="MenuBar.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="MenuBar.Designer.cs">
+    <Compile Include="MenuBar.designer.cs">
       <DependentUpon>MenuBar.cs</DependentUpon>
     </Compile>
-    <Compile Include="PokeCount.cs">
+    <Compile Include="PokeCountMini.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PokeCount.Designer.cs">
-      <DependentUpon>PokeCount.cs</DependentUpon>
+    <Compile Include="PokeCountMini.Designer.cs">
+      <DependentUpon>PokeCountMini.cs</DependentUpon>
     </Compile>
     <Compile Include="PokeInfo.cs" />
-    <Compile Include="PokeMenu.cs">
+    <Compile Include="PokeMenuMini.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="PokeMenu.Designer.cs">
-      <DependentUpon>PokeMenu.cs</DependentUpon>
+    <Compile Include="PokeMenuMini.Designer.cs">
+      <DependentUpon>PokeMenuMini.cs</DependentUpon>
     </Compile>
     <Compile Include="PokeNameReader.cs" />
-    <Compile Include="ProgramPokeCount.cs" />
+    <Compile Include="ProgramPokeCountMini.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="PokeCount.resx">
-      <DependentUpon>PokeCount.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
