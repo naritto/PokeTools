@@ -6,7 +6,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{ACB2954F-8CA2-4A4B-967E-76CCA8B8D2C2}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>PokeCount</RootNamespace>
+    <RootNamespace>ns_PokeCount</RootNamespace>
     <AssemblyName>PokeCount</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -80,6 +80,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
