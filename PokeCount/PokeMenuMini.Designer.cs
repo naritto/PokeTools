@@ -39,7 +39,7 @@
             // 
             // encount_all
             // 
-            this.encount_all.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            this.encount_all.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.encount_all.Font = new System.Drawing.Font("Arial", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.encount_all.Location = new System.Drawing.Point(107, 56);
@@ -82,7 +82,6 @@
             this.label1.Size = new System.Drawing.Size(99, 27);
             this.label1.TabIndex = 4;
             this.label1.Text = "遭遇：";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // pokename
             // 
@@ -99,7 +98,7 @@
             // 
             // dict_num
             // 
-            this.dict_num.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            this.dict_num.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.dict_num.Font = new System.Drawing.Font("Arial", 20F);
             this.dict_num.ForeColor = System.Drawing.Color.Black;
@@ -123,7 +122,7 @@
             this.show_pic.UseVisualStyleBackColor = false;
             this.show_pic.Click += new System.EventHandler(this.Show_pic_Click);
             // 
-            // PokeMenu
+            // PokeMenuMini
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -134,7 +133,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.minus_button);
             this.Controls.Add(this.plus_button);
-            this.Name = "PokeMenu";
+            this.Name = "PokeMenuMini";
             this.Size = new System.Drawing.Size(330, 105);
             this.ResumeLayout(false);
             this.PerformLayout();

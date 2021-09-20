@@ -70,6 +70,15 @@
     <Compile Include="PokeNameReader.cs" />
     <Compile Include="ProgramPokeCountMini.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="MenuBar.resx">
+      <DependentUpon>MenuBar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PokeCountMini.resx">
+      <DependentUpon>PokeCountMini.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PokeMenuMini.resx">
+      <DependentUpon>PokeMenuMini.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

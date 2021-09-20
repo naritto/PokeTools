@@ -10,7 +10,7 @@ namespace ns_PokeCount
 {
     static class LogMini
     {
-        public static void LoadLog(PokeCountMini target, ref PokeMenuMini[] userControls, string result_folder_path, int max_control_num)
+        public static void LoadLog(PokeCountMini target, string result_folder_path)
         {
             OpenFileDialog ofd = new OpenFileDialog();
             ofd.FileName = "result.csv";
@@ -32,8 +32,8 @@ namespace ns_PokeCount
                     StreamReader sr = new StreamReader(stream);
                     {
                         int i = 0;
-                        Array.Resize(ref userControls, max_control_num);
-                        target.ChangeUserControlCounts(max_control_num);
+                        target.ResizePokeMenu(PokeCountMini.MAX_CONTROL_NUM);
+                        target.ChangeUserControlCounts(PokeCountMini.MAX_CONTROL_NUM);
                         while (!sr.EndOfStream)
                         {
                             string line = sr.ReadLine();
@@ -50,9 +50,10 @@ namespace ns_PokeCount
                     }
                 }
             }
+            target.HasChanged = 1;
         }
 
-        public static void SaveLog(PokeCountMini target, ref PokeMenuMini[] user_controls, string result_folder_path)
+        public static void SaveLog(PokeCountMini target, string result_folder_path)
         {
             SaveFileDialog sfd = new SaveFileDialog();
             DateTime dt = DateTime.Now;
@@ -83,6 +84,7 @@ namespace ns_PokeCount
                     stream.Close();
                 }
             }
+            target.HasChanged = 0;
             return;
         }
     }

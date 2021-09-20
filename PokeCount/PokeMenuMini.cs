@@ -12,6 +12,7 @@ namespace ns_PokeCount
 {
     public partial class PokeMenuMini : UserControl
     {
+        public event EventHandler HasChangedEvent;
         public event PokeMenuEventHandler PokeMenuEvent;
         private void UpdatePokeName(int id, string name)
         {
@@ -19,6 +20,12 @@ namespace ns_PokeCount
             PokeMenuEvent(e);
             DictNum = e.ID;
             PokeName = e.Name;
+        }
+        private void HasChanged()
+        {
+            HasChangedEvent(this, EventArgs.Empty);
+            return;
+
         }
 
         public delegate void PokeMenuEventHandler(PokeMenuEventArgs e);
@@ -186,11 +193,13 @@ namespace ns_PokeCount
             {
                 m_dict_num = Convert.ToInt32(dict_num.Text);
             }
+            HasChanged();
         }
         private void Pokename_TextChanged(object sender, EventArgs e)
         {
             m_poke_name = pokename.Text;
             pokename.TextAlign = HorizontalAlignment.Center;
+            HasChanged();
         }
 
         private void Encount_all_KeyPress(object sender, KeyPressEventArgs e)
@@ -213,6 +222,7 @@ namespace ns_PokeCount
             {
                 m_count_all = 0;
             }
+            HasChanged();
         }
 
 
@@ -234,11 +244,6 @@ namespace ns_PokeCount
         private void Show_pic_Click(object sender, EventArgs e)
         {
             UpdatePokeInfo();
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

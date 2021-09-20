@@ -39,7 +39,6 @@
             this.CountType6 = new System.Windows.Forms.ToolStripMenuItem();
             this.CountType7 = new System.Windows.Forms.ToolStripMenuItem();
             this.CountType8 = new System.Windows.Forms.ToolStripMenuItem();
-            this.CountType9 = new System.Windows.Forms.ToolStripMenuItem();
             this.ResetMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ログ出力ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loadLogMenuBar = new System.Windows.Forms.ToolStripMenuItem();
@@ -77,8 +76,7 @@
             this.CountType5,
             this.CountType6,
             this.CountType7,
-            this.CountType8,
-            this.CountType9});
+            this.CountType8});
             this.CountTypesNumMenuItem.Name = "CountTypesNumMenuItem";
             this.CountTypesNumMenuItem.Size = new System.Drawing.Size(180, 22);
             this.CountTypesNumMenuItem.Text = "同時表示件数";
@@ -86,65 +84,58 @@
             // CountType1
             // 
             this.CountType1.Name = "CountType1";
-            this.CountType1.Size = new System.Drawing.Size(80, 22);
+            this.CountType1.Size = new System.Drawing.Size(180, 22);
             this.CountType1.Text = "1";
             this.CountType1.Click += new System.EventHandler(this.CountType1_Click);
             // 
             // CountType2
             // 
             this.CountType2.Name = "CountType2";
-            this.CountType2.Size = new System.Drawing.Size(80, 22);
+            this.CountType2.Size = new System.Drawing.Size(180, 22);
             this.CountType2.Text = "2";
             this.CountType2.Click += new System.EventHandler(this.CountType2_Click);
             // 
             // CountType3
             // 
             this.CountType3.Name = "CountType3";
-            this.CountType3.Size = new System.Drawing.Size(80, 22);
+            this.CountType3.Size = new System.Drawing.Size(180, 22);
             this.CountType3.Text = "3";
             this.CountType3.Click += new System.EventHandler(this.CountType3_Click);
             // 
             // CountType4
             // 
             this.CountType4.Name = "CountType4";
-            this.CountType4.Size = new System.Drawing.Size(80, 22);
+            this.CountType4.Size = new System.Drawing.Size(180, 22);
             this.CountType4.Text = "4";
             this.CountType4.Click += new System.EventHandler(this.CountType4_Click);
             // 
             // CountType5
             // 
             this.CountType5.Name = "CountType5";
-            this.CountType5.Size = new System.Drawing.Size(80, 22);
+            this.CountType5.Size = new System.Drawing.Size(180, 22);
             this.CountType5.Text = "5";
             this.CountType5.Click += new System.EventHandler(this.CountType5_Click);
             // 
             // CountType6
             // 
             this.CountType6.Name = "CountType6";
-            this.CountType6.Size = new System.Drawing.Size(80, 22);
+            this.CountType6.Size = new System.Drawing.Size(180, 22);
             this.CountType6.Text = "6";
             this.CountType6.Click += new System.EventHandler(this.CountType6_Click);
             // 
             // CountType7
             // 
             this.CountType7.Name = "CountType7";
-            this.CountType7.Size = new System.Drawing.Size(80, 22);
+            this.CountType7.Size = new System.Drawing.Size(180, 22);
             this.CountType7.Text = "7";
             this.CountType7.Click += new System.EventHandler(this.CountType7_Click);
             // 
             // CountType8
             // 
             this.CountType8.Name = "CountType8";
-            this.CountType8.Size = new System.Drawing.Size(80, 22);
+            this.CountType8.Size = new System.Drawing.Size(180, 22);
             this.CountType8.Text = "8";
             this.CountType8.Click += new System.EventHandler(this.CountType8_Click);
-            // 
-            // CountType9
-            // 
-            this.CountType9.Name = "CountType9";
-            this.CountType9.Size = new System.Drawing.Size(80, 22);
-            this.CountType9.Text = "9";
-            this.CountType9.Click += new System.EventHandler(this.CountType9_Click);
             // 
             // ResetMenuItem
             // 
@@ -165,14 +156,14 @@
             // loadLogMenuBar
             // 
             this.loadLogMenuBar.Name = "loadLogMenuBar";
-            this.loadLogMenuBar.Size = new System.Drawing.Size(180, 22);
+            this.loadLogMenuBar.Size = new System.Drawing.Size(173, 22);
             this.loadLogMenuBar.Text = "ファイルから読み込み";
             this.loadLogMenuBar.Click += new System.EventHandler(this.loadLogMenuBar_Click);
             // 
             // saveLogMenuBar
             // 
             this.saveLogMenuBar.Name = "saveLogMenuBar";
-            this.saveLogMenuBar.Size = new System.Drawing.Size(180, 22);
+            this.saveLogMenuBar.Size = new System.Drawing.Size(173, 22);
             this.saveLogMenuBar.Text = "ファイルへ保存";
             this.saveLogMenuBar.Click += new System.EventHandler(this.saveLogMenuBar_Click);
             // 
@@ -203,7 +194,6 @@
         private System.Windows.Forms.ToolStripMenuItem CountType6;
         private System.Windows.Forms.ToolStripMenuItem CountType7;
         private System.Windows.Forms.ToolStripMenuItem CountType8;
-        private System.Windows.Forms.ToolStripMenuItem CountType9;
         private System.Windows.Forms.ToolStripMenuItem ResetMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ログ出力ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem loadLogMenuBar;

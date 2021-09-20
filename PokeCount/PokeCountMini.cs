@@ -13,10 +13,13 @@ namespace ns_PokeCount
 {
     public partial class PokeCountMini : Form
     {
-        public const int MAX_CONTROL_NUM = 9;
-        const int DEFAULT_CONTROL_NUM = 1;
+        public static readonly int MAX_CONTROL_NUM = 8;
+        public const int DEFAULT_CONTROL_NUM = 1;
         private int m_user_control_num = DEFAULT_CONTROL_NUM;
         public const int DISPLAY_WIDTH = 345;
+        public const int POKEMENU_HEIGHT = 110;
+        public const int MENUBAR_HEIGHT = 20;
+        public const int TOOL_INFO_HEIGHT = 50;
         public int UserControlNum
         {
             set
@@ -32,6 +35,36 @@ namespace ns_PokeCount
         private PokeInfo m_pokeinfo;
         private string m_resource_folder_path = "";
 
+        public int m_has_changed;
+        public int HasChanged {
+            set {
+                m_has_changed = value;
+            }
+            get {
+                return m_has_changed;
+            }
+        }
+        private int m_count_total = 0;
+        public int CountTotal
+        {
+            set
+            {
+                if (total_num_label.Text != "")
+                {
+                    m_count_total = value;
+                }
+                else
+                {
+                    m_count_total = 0;
+                }
+                total_num_label.Text = Convert.ToString(m_count_total);
+            }
+            get
+            {
+                return m_count_total;
+            }
+        }
+
 
         public PokeCountMini()
         {
@@ -44,32 +77,54 @@ namespace ns_PokeCount
             this.menuBar1.ResetContentsEvent += new EventHandler(CallBackEventResetAllInfo);
             this.menuBar1.LoadLogEvent += new EventHandler(CallBackLoadLog);
             this.menuBar1.SaveLogEvent += new EventHandler(CallBackSaveLog);
+            HasChanged = 0;
         }
         public void InitializeView(int start, int end)
         {
-            Array.Resize(ref this.m_pokemenu, end);
+            ResizePokeMenu(end);
             for (int i = start; i < end; ++i)
             {
                 Initialize(i);
 
             }
-            this.Size = new Size(DISPLAY_WIDTH, 110 * m_user_control_num + 70);
+            this.Size = new Size(DISPLAY_WIDTH, POKEMENU_HEIGHT * m_user_control_num + MENUBAR_HEIGHT + TOOL_INFO_HEIGHT + 35);
             return;
         }
+
+        public void ResizePokeMenu(int size) {
+            Array.Resize(ref this.m_pokemenu, size);
+            return;
+        }
+
         public void Initialize(int i)
         {
-            this.m_pokemenu[i] = new PokeMenuMini(m_resource_folder_path);
-            this.m_pokemenu[i].Location = new System.Drawing.Point(0, 110 * i + 30);
-            this.m_pokemenu[i].Name = "userControl1-" + Convert.ToString(i);
-            this.m_pokemenu[i].Size = new System.Drawing.Size(DISPLAY_WIDTH, 118);
-            this.m_pokemenu[i].TabIndex = i;
+            this.m_pokemenu[i] = new PokeMenuMini(m_resource_folder_path)
+            {
+                Location = new Point(0, POKEMENU_HEIGHT * i + MENUBAR_HEIGHT + TOOL_INFO_HEIGHT),
+                Name = "userControl1-" + Convert.ToString(i),
+                Size = new System.Drawing.Size(DISPLAY_WIDTH, POKEMENU_HEIGHT),
+                TabIndex = i
+            };
             this.Controls.Add(this.m_pokemenu[i]);
             this.m_pokemenu[i].PokeMenuEvent += new PokeMenuMini.PokeMenuEventHandler(CallBackEventProgress);
+            this.m_pokemenu[i].HasChangedEvent += new EventHandler(CallBackEventHasChanged);
+            this.CountTotal = 0;
+
+        }
+
+        public void CalcCountTotal() {
+            int temp = 0;
+            for (int i = 0; i < UserControlNum; ++i) {
+                temp += m_pokemenu[i].CountAll;
+            }
+            CountTotal = temp;
+            return;
         }
 
         public void SetValues(string[] values, int i)
         {
             this.m_pokemenu[i].SetValues(values);
+            HasChanged = 1;
             return;
         }
 
@@ -88,7 +143,7 @@ namespace ns_PokeCount
                 InitializeView(m_user_control_num, count);
             }
             m_user_control_num = count;
-            this.Size = new Size(DISPLAY_WIDTH, 110 * m_user_control_num + 70);
+            this.Size = new Size(DISPLAY_WIDTH, POKEMENU_HEIGHT * m_user_control_num + MENUBAR_HEIGHT + TOOL_INFO_HEIGHT + 35);
         }
 
         public string MakeOutputLine(int i)
@@ -105,6 +160,11 @@ namespace ns_PokeCount
         {
             ChangeUserControlCounts(e.Count);
         }
+        private void CallBackEventHasChanged(object sender, EventArgs e)
+        {
+            HasChanged = 1;
+            CalcCountTotal();
+        }
 
         private void CallBackEventResetAllInfo(object sender, EventArgs e)
         {
@@ -116,18 +176,28 @@ namespace ns_PokeCount
         }
         private void CallBackLoadLog(object sender, EventArgs e)
         {
-            LogMini.LoadLog(this, ref m_pokemenu, System.IO.Path.Combine(m_resource_folder_path, "result"), MAX_CONTROL_NUM);
+            if (HasChanged == 1)
+            {
+                LogMini.SaveLog(this, Path.Combine(m_resource_folder_path, "result"));
+            }
+            LogMini.LoadLog(this, Path.Combine(m_resource_folder_path, "result"));
+            CalcCountTotal();
             return;
         }
         private void CallBackSaveLog(object sender, EventArgs e)
         {
-            LogMini.SaveLog(this, ref m_pokemenu, System.IO.Path.Combine(m_resource_folder_path, "result"));
+            if (HasChanged == 1) {
+                LogMini.SaveLog(this, Path.Combine(m_resource_folder_path, "result"));
+            }
             return;
         }
 
         private void OnFormClosing(object sender, FormClosingEventArgs e)
         {
-            LogMini.SaveLog(this, ref m_pokemenu, System.IO.Path.Combine(m_resource_folder_path, "result"));
+            if (HasChanged == 1)
+            {
+                LogMini.SaveLog(this, Path.Combine(m_resource_folder_path, "result"));
+            }
         }
     }
 }
